@@ -12,11 +12,11 @@ public class ExchangeRequest extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "to_currency_id", nullable = false)
     private Currency toCurrency;
 
@@ -26,7 +26,19 @@ public class ExchangeRequest extends BaseEntity {
 
     private String status;
 
+    public ExchangeRequest(User user, Currency toCurrency, Double amountInKrw, Double amountAfterExchange, String status) {
+        this.user = user;
+        this.toCurrency = toCurrency;
+        this.amountInKrw = amountInKrw;
+        this.amountAfterExchange = amountAfterExchange;
+        this.status = status;
 
+    }
 
+    public ExchangeRequest() {}
+
+    public void setStatus(String status){
+        this.status = status;
+    }
 
 }

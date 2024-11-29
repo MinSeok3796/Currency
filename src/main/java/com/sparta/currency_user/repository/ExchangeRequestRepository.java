@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ExchangeReqeustRepository extends JpaRepository<ExchangeRequest, Long> {
+public interface ExchangeRequestRepository extends JpaRepository<ExchangeRequest, Long> {
     List<ExchangeRequest> findByUser(User user);
     void deleteByUser(User user);
 }
